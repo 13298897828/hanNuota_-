@@ -1,32 +1,67 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+//
+//  main.m
+//  zy_8_8_作业
+//
+//  Created by lanou3g on 15/8/8.
+//  Copyright (c) 2015年 lanou3g. All rights reserved.
+//
 
-# Precompiled Headers
-*.gch
-*.pch
+#import <Foundation/Foundation.h>
+void Paixu(char *p[],int n);
+void Paixu(char *p[],int n){
+    for (int i = 0; i < n  - 1; i ++) {
+        for (int j = 0; j < n - i - 1; j ++) {
+            if (strcmp(p[j],p[j + 1]) > 0) {
+                char t[20];
+                strcpy(t, p[j]);
+                strcpy(p[j], p[j +1]);
+                strcpy(p[j+ 1], t);
+              
+            }
+        }
+    }
+    for (int i = 0; i < n; i ++) {
+        printf("%s\n",p[i]);
+    }
+    
+}
+void maxNum(int p,int p1,int p2,int *p3){
+    if (p1 < p && p2 < p) {
+        *p3 = p1;
+    }
+    if (p1 > p&& p1> p2) {
+        *p3 = p1;
+    }if (p2 > p1&& p2> p) {
+        *p3 = p2;
+    }
+    
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+}
+void hannueta(char a,char b,char c ,int n);
+void hannueta(char a,char b,char c ,int n){
+    if (n == 1) {
+        printf("%d %c seed %c\n",n,a,c);
+    }
+    else{
+        hannueta(a, c, b, n - 1);
+        printf("%d %c seed %c\n",n,a,c);
+        hannueta(b, a, c, n - 1);
+    }
+}
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+int main(int argc, const char * argv[]) {
+    char str[6][20] = {"adsd","dsfsd","wertr","rtyrt","rtuyy","uiioi"};
+    char *str1[6];
+    for (int i = 0; i < 6; i ++) {
+        str1[i] =str[i];
+    }
+    Paixu(str1,6);
+    int a = 10,b = 12,c = 5,p;
+ 
+    maxNum(a, b, c,&p);
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+    printf("%d\n",p);
+    hannueta('a', 'b', 'c', 3);
+    
+}
 
-# Debug files
-*.dSYM/
